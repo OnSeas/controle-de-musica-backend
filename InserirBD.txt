@@ -1,0 +1,3 @@
+insert into tbl_musica(id, cln_artista, cln_compositor, cln_duracao, cln_titulo, cln_favorito)
+values(1, 'taylor', 'taylor', 450, 'midnight rain', NULL),
+(2, 'taylor', 'taylor', 360, 'the great war', NULL)
