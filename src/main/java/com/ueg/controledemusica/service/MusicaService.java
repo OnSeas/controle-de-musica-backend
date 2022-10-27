@@ -18,7 +18,12 @@ public class MusicaService {
     }
 
     public Musica inserir(Musica musica){
-        return musicaRepository.save(musica);
+        if(!musicaRepository.existeNoArtista (musica.getTitulo(), musica.getArtista())){
+            return musicaRepository.save(musica);
+        }
+        else{
+            throw new IllegalStateException("O artista " + musica.getArtista() + " já tem uma música com este nome!");
+        }
     }
 
     public List<Musica> listarTudo(){
