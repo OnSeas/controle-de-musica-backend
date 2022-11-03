@@ -19,7 +19,12 @@ public class MusicaService {
 
     public Musica inserir(Musica musica){
         if(!musicaRepository.existeNoArtista (musica.getTitulo(), musica.getArtista())){
-            return musicaRepository.save(musica);
+            if(!(musica.getDuracao() < 0)){
+                return musicaRepository.save(musica);
+            }
+            else{
+                throw new IllegalStateException("Não é possível cadastrar uma música com menos de 0 segundos");
+            }
         }
         else{
             throw new IllegalStateException("O artista " + musica.getArtista() + " já tem uma música com este nome!");
@@ -56,8 +61,12 @@ public class MusicaService {
             musicaBD.setCompositor(musica.getCompositor());
         }
 
-        if(StringUtils.hasLength(musica.getTitulo()))
-        musicaBD.setDuracao(musica.getDuracao());
+        if(musica.getDuracao() >= 0){
+            musicaBD.setDuracao(musica.getDuracao());
+        }
+        else{
+            throw new IllegalStateException("A música não pode ter menos de 0 segundos!");
+        }
 
         musicaRepository.save(musicaBD);
         return musicaBD;
