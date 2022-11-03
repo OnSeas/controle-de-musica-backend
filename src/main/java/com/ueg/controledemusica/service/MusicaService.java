@@ -39,8 +39,13 @@ public class MusicaService {
     public Musica alterar(Long id, Musica musica){
         Musica musicaBD = getMusica(id);
 
-        if(StringUtils.hasLength(musica.getTitulo())) {
-            musicaBD.setTitulo(musica.getTitulo());
+        if(StringUtils.hasLength(musica.getTitulo()) && !musicaBD.getTitulo().equals(musica.getTitulo())) {
+            if(!musicaRepository.existeNoArtista(musica.getTitulo(), musica.getArtista())){
+                musicaBD.setTitulo(musica.getTitulo());
+            }
+            else{
+                throw new IllegalStateException("O artista " + musica.getArtista() + " já tem outra música com este nome!");
+            }
         }
 
         if(StringUtils.hasLength(musica.getArtista())){
