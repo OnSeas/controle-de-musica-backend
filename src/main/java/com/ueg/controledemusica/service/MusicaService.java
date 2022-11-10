@@ -1,5 +1,6 @@
 package com.ueg.controledemusica.service;
 
+import com.ueg.controledemusica.exeptions.service.ServiceException;
 import com.ueg.controledemusica.model.Musica;
 import com.ueg.controledemusica.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +24,11 @@ public class MusicaService {
                 return musicaRepository.save(musica);
             }
             else{
-                throw new IllegalStateException("Não é possível cadastrar uma música com menos de 0 segundos");
+                throw new ServiceException("Não é possível cadastrar uma música com menos de 0 segundo");
             }
         }
         else{
-            throw new IllegalStateException("O artista " + musica.getArtista() + " já tem uma música com este nome!");
+            throw new ServiceException("O artista " + musica.getArtista() + " já tem uma música com este nome!");
         }
     }
 
@@ -49,7 +50,7 @@ public class MusicaService {
                 musicaBD.setTitulo(musica.getTitulo());
             }
             else{
-                throw new IllegalStateException("O artista " + musica.getArtista() + " já tem outra música com este nome!");
+                throw new ServiceException("O artista " + musica.getArtista() + " já tem uma música com este nome!");
             }
         }
 
@@ -65,7 +66,7 @@ public class MusicaService {
             musicaBD.setDuracao(musica.getDuracao());
         }
         else{
-            throw new IllegalStateException("A música não pode ter menos de 0 segundos!");
+            throw new ServiceException("Não é possível cadastrar uma música com menos de 0 segundo");
         }
 
         musicaRepository.save(musicaBD);
