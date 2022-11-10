@@ -3,10 +3,7 @@ package com.ueg.controledemusica.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @NoArgsConstructor
 @Entity
@@ -14,6 +11,16 @@ import javax.persistence.Table;
 public @Data class Musica {
 
     @Id
+    @SequenceGenerator(
+            name = "musica_sequence",
+            sequenceName = "musica_sequence",
+            allocationSize = 1,
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "musica_sequence"
+    )
     private Long idMusica;
 
     @Column(name = "cln_titulo", length = 40, nullable = false)
