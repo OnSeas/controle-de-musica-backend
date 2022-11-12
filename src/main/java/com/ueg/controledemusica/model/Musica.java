@@ -27,7 +27,7 @@ public @Data class Musica {
     @Column(name = "cln_titulo", length = 40, nullable = false)
     private String titulo;
 
-    @Column(name = "cln_estiloMusical", nullable = false)
+    @Column(name = "cln_estilo_musical", nullable = false)
     private TipoEstilo estiloMusical;
 
     @Column(name = "cln_duracao", nullable = false)

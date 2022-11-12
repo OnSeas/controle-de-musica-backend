@@ -1,3 +1,8 @@
-insert into tbl_musica(id_musica, cln_artista, cln_compositor, cln_duracao, cln_titulo, cln_favorito)
-values(1, 'taylor', 'taylor', 450, 'midnight rain', NULL),
-(2, 'taylor', 'taylor', 360, 'the great war', NULL)
+insert into tbl_musica(id_musica, cln_titulo, cln_estilo_musical, cln_duracao, cln_artista, cln_compositor, cln_favorito)
+values(1, 'Midnight Rain', '0', 174, 'Taylor Swift', 'Jack Antonoff', NULL),
+(2, 'Sweet Child OMine', '3', 355, 'Guns N Roses', 'Duff McKagan', NULL),
+(3, 'Ivy', '1', 249, 'Frank Ocean', 'Frank Ocean', NULL),
+(4, 'I Will Wait', '4', 277, 'Mumford & Sons', 'Marcus Mumford', NULL),
+(5, 'Drew Barrymore', '1', 231, 'SZA', 'Carter Lang', NULL),
+(6, 'Stubborn Love', '4', 279, 'The Lumineers', 'Jeremiah Fraites', NULL),
+(7, 'As It Was', '0', 167, 'Harry Styles', 'Kid Harpoon', NULL)
