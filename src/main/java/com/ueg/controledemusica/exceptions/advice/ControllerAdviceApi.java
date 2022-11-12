@@ -1,7 +1,7 @@
-package com.ueg.controledemusica.exeptions.advice;
+package com.ueg.controledemusica.exceptions.advice;
 
-import com.ueg.controledemusica.exeptions.service.ServiceErro;
-import com.ueg.controledemusica.exeptions.service.ServiceException;
+import com.ueg.controledemusica.exceptions.service.ServiceErro;
+import com.ueg.controledemusica.exceptions.service.ServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

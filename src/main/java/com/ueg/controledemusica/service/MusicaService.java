@@ -1,6 +1,6 @@
 package com.ueg.controledemusica.service;
 
-import com.ueg.controledemusica.exeptions.service.ServiceException;
+import com.ueg.controledemusica.exceptions.service.ServiceException;
 import com.ueg.controledemusica.model.Musica;
 import com.ueg.controledemusica.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;

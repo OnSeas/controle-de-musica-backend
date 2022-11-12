@@ -1,4 +1,4 @@
-package com.ueg.controledemusica.exeptions.service;
+package com.ueg.controledemusica.exceptions.service;
 
 public class ServiceErro {
     private String status;
