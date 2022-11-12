@@ -1,5 +1,6 @@
 package com.ueg.controledemusica.model;
 
+import com.ueg.controledemusica.enums.TipoEstilo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,6 +26,9 @@ public @Data class Musica {
 
     @Column(name = "cln_titulo", length = 40, nullable = false)
     private String titulo;
+
+    @Column(name = "cln_estiloMusical", nullable = false)
+    private TipoEstilo estiloMusical;
 
     @Column(name = "cln_duracao", nullable = false)
     private Integer duracao;
