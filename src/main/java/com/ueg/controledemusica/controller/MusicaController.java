@@ -16,7 +16,7 @@ public class MusicaController {
 
     @GetMapping(path = "{idMusica}")
     public Musica getMusica(@PathVariable("idMusica") Long id){
-        return musicaService.getMusica(id);
+        return musicaService.getMusicaById(id);
     }
 
     @GetMapping(path = "")
@@ -24,6 +24,11 @@ public class MusicaController {
         List<Musica> musicas = new ArrayList<Musica>();
         musicas = musicaService.listarTudo();
         return musicas;
+    }
+
+    @GetMapping(path = "/favoritas")
+    public List<Musica> listarFavoritas(){
+        return musicaService.listarFavoritas();
     }
 
     @PostMapping
@@ -41,5 +46,14 @@ public class MusicaController {
         return musicaService.alterar(id, musica);
     }
 
+    @PatchMapping(path = "/fav/{idMusica}")
+    public void favoritar(@PathVariable("idMusica") Long id){
+        musicaService.turnFavorite(id);
+    }
+
+    @PatchMapping(path = "/unfav/{idMusica}")
+    public void desFavoritar(@PathVariable("idMusica") Long id){
+        musicaService.unFavorite(id);
+    }
 
 }

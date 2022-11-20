@@ -14,7 +14,7 @@ public class MusicaService {
     @Autowired
     private MusicaRepository musicaRepository;
 
-    public Musica getMusica(Long id){
+    public Musica getMusicaById(Long id){
         return musicaRepository.findByIdMusica(id);
     }
 
@@ -37,13 +37,17 @@ public class MusicaService {
     }
 
     public Musica remover(Long id){
-        Musica musica = getMusica(id);
+        Musica musica = getMusicaById(id);
         musicaRepository.delete(musica);
         return musica;
     }
 
+    public List<Musica> listarFavoritas() {
+        return musicaRepository.musicasFavoritas();
+    }
+
     public Musica alterar(Long id, Musica musica){
-        Musica musicaBD = getMusica(id);
+        Musica musicaBD = getMusicaById(id);
 
         if(StringUtils.hasLength(musica.getTitulo()) && !musicaBD.getTitulo().equals(musica.getTitulo())) {
             if(!musicaRepository.existeNoArtista(musica.getTitulo(), musica.getArtista())){
@@ -71,5 +75,27 @@ public class MusicaService {
 
         musicaRepository.save(musicaBD);
         return musicaBD;
+    }
+
+    public void turnFavorite(Long id){
+        Musica musica = getMusicaById(id);
+        if(!musica.getFavorito()){
+            musica.setFavorito(true);
+            musicaRepository.save(musica);
+        }
+        else{
+            throw new ServiceException("A música já está favoritada!");
+        }
+    }
+
+    public void unFavorite(Long id){
+        Musica musica = getMusicaById(id);
+        if(musica.getFavorito()){
+            musica.setFavorito(false);
+            musicaRepository.save(musica);
+        }
+        else{
+            throw new ServiceException("A música já não é favorita!");
+        }
     }
 }

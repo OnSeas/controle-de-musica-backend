@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface MusicaRepository extends JpaRepository<Musica, Long> {
 
@@ -16,6 +18,13 @@ public interface MusicaRepository extends JpaRepository<Musica, Long> {
             "WHERE (m.titulo = :titulo AND m.artista = :artista) "
     )
     Boolean existeNoArtista(@Param("titulo") String titulo, @Param("artista") String artista);
+
+    @Query(
+            "SELECT m " +
+            "FROM Musica m  " +
+            "WHERE (m.favorito = true) "
+    )
+    List<Musica> musicasFavoritas();
 
     Musica findByIdMusica(Long idMusica);
 }

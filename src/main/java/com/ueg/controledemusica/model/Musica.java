@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_musica")
-public @Data class Musica {
+public class Musica {
 
     @Id
     @SequenceGenerator(
@@ -41,4 +41,60 @@ public @Data class Musica {
 
     @Column(name = "cln_favorito")
     private Boolean favorito;
+
+    public Long getIdMusica() {
+        return idMusica;
+    }
+
+    public void setIdMusica(Long idMusica) {
+        this.idMusica = idMusica;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public TipoEstilo getEstiloMusical() {
+        return estiloMusical;
+    }
+
+    public void setEstiloMusical(TipoEstilo estiloMusical) {
+        this.estiloMusical = estiloMusical;
+    }
+
+    public Integer getDuracao() {
+        return duracao;
+    }
+
+    public void setDuracao(Integer duracao) {
+        this.duracao = duracao;
+    }
+
+    public String getArtista() {
+        return artista;
+    }
+
+    public void setArtista(String artista) {
+        this.artista = artista;
+    }
+
+    public String getCompositor() {
+        return compositor;
+    }
+
+    public void setCompositor(String compositor) {
+        this.compositor = compositor;
+    }
+
+    public Boolean getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(Boolean favorito) {
+        this.favorito = favorito;
+    }
 }
