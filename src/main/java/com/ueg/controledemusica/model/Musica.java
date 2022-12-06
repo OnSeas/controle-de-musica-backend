@@ -1,7 +1,6 @@
 package com.ueg.controledemusica.model;
 
 import com.ueg.controledemusica.enums.TipoEstilo;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;

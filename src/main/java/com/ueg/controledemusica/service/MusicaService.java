@@ -21,6 +21,7 @@ public class MusicaService {
     public Musica inserir(Musica musica){
         if(!musicaRepository.existeNoArtista (musica.getTitulo(), musica.getArtista())){
             if(!(musica.getDuracao() < 0)){
+                musica.setFavorito(false);
                 return musicaRepository.save(musica);
             }
             else{
