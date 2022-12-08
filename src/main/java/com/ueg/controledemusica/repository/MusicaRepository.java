@@ -22,9 +22,15 @@ public interface MusicaRepository extends JpaRepository<Musica, Long> {
     @Query(
             "SELECT m " +
             "FROM Musica m  " +
-            "WHERE (m.favorito = true) "
+            "WHERE (m.favorito = true) order by m.idMusica "
     )
     List<Musica> musicasFavoritas();
 
+    @Query(
+            "SELECT m " +
+            "FROM Musica  m " +"" +
+            "order by m.idMusica"
+    )
+    List<Musica> findAllOrderById();
     Musica findByIdMusica(Long idMusica);
 }

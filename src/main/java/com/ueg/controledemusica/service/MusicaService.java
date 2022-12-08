@@ -37,7 +37,7 @@ public class MusicaService {
     }
 
     public List<Musica> listarTudo(){
-        return musicaRepository.findAll();
+        return musicaRepository.findAllOrderById();
     }
 
     public Musica remover(Long id){

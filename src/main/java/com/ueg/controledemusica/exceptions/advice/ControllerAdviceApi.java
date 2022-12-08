@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 public class ControllerAdviceApi {
     @ExceptionHandler(ServiceException.class)
     public ResponseEntity<ServiceErro> resourceNotFound(ServiceException e, HttpServletRequest request) {
-        String erro = "Recurso não encontrado";
         HttpStatus status = HttpStatus.NOT_FOUND;
         ServiceErro err = new ServiceErro(String.valueOf(status), e.getMessage());
         return ResponseEntity.status(status).body(err);
