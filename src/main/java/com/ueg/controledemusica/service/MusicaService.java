@@ -71,6 +71,7 @@ public class MusicaService {
         }
 
         if(musica.getDuracao() >= 0){
+            musica.validarDuracao(); // chama por reflexão a validação do tempo min de acordo com a anotação.
             musicaBD.setDuracao(musica.getDuracao());
         }
         else{
