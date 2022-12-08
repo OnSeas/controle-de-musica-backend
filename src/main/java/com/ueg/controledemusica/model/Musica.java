@@ -1,5 +1,6 @@
 package com.ueg.controledemusica.model;
 
+import com.ueg.controledemusica.anotation.DuracaoMin;
 import com.ueg.controledemusica.enums.TipoEstilo;
 import lombok.NoArgsConstructor;
 
@@ -8,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "tbl_musica")
-public class Musica {
+public class Musica extends AbstractModel{
 
     @Id
     @SequenceGenerator(
@@ -30,6 +31,7 @@ public class Musica {
     private TipoEstilo estiloMusical;
 
     @Column(name = "cln_duracao", nullable = false)
+    @DuracaoMin(tempo = 50)
     private Integer duracao;
 
     @Column(name = "cln_artista", length = 40,nullable = false)

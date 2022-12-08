@@ -2,6 +2,7 @@ package com.ueg.controledemusica.service;
 
 import com.ueg.controledemusica.exceptions.service.ServiceException;
 import com.ueg.controledemusica.model.Musica;
+import com.ueg.controledemusica.reflection.ValidacoesReflexao;
 import com.ueg.controledemusica.repository.MusicaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 public class MusicaService {
     @Autowired
     private MusicaRepository musicaRepository;
+    private ValidacoesReflexao validacoesReflexao;
 
     public Musica getMusicaById(Long id){
         return musicaRepository.findByIdMusica(id);
@@ -22,6 +24,7 @@ public class MusicaService {
         if(!musicaRepository.existeNoArtista (musica.getTitulo(), musica.getArtista())){
             if(!(musica.getDuracao() < 0)){
                 musica.setFavorito(false);
+                musica.validarDuracao(); // chama por reflexão a validação do tempo min de acordo com a anotação.
                 return musicaRepository.save(musica);
             }
             else{
